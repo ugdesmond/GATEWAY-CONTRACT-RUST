@@ -1,0 +1,46 @@
+[package]
+name = "konnadex"
+version = "1.0.0"
+authors = ["Ugochukwu Okoro <ugochukwuokoro@konnadex.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+
+
+[[bin]]
+name = "konnadex_multisender"
+path = "src/konnadex_multisender.rs"
+
+[[bin]]
+name = "konnadex_invoice"
+path = "src/konnadex_invoice.rs"
+
+
+[[bin]]
+name = "konnadex_processor"
+path = "src/konnadex_processor.rs"
+
+
+
+
+[dependencies]
+near-sdk = "4.0.0"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+ethers = "0.17.0"
+borsh = "0.9.3"
+base64 = "0.13.0"
+uint = { version = "0.9.3", default-features = false }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+
+[workspace]
+members = []
